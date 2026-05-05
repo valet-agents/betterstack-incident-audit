@@ -7,6 +7,9 @@ description: >-
   time to walk through the latest pager event.
 category: compliance
 
+example:
+  prompt: "Walk me through the latest pager event."
+
 story:
   hero: "Every page becomes an audit-ready timeline, automatically."
   subheadline: >-
