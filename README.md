@@ -1,6 +1,6 @@
 # Better Stack Incident Audit
 
-When an incident fires, it captures the timeline, postmortem owner, and the evidence to preserve — before anyone forgets the details.
+Every day, reviews the previous 24 hours of pager events — timeline, postmortem owner, and the evidence to preserve — before anyone forgets the details.
 
 ## Prerequisites
 - A [Better Stack](https://betterstack.com) account with an API token and at least one monitor configured

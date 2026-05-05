@@ -1,25 +1,24 @@
 name: betterstack-incident-audit
 display_name: Better Stack Incident Audit
 description: >-
-  When an incident fires, it captures the timeline, postmortem
-  owner, and the evidence to preserve — before anyone forgets the
-  details. @mention it any time to walk through the latest pager
-  event.
+  Every day, reviews the previous 24 hours of Better Stack
+  incidents — captures each timeline, postmortem owner, and the
+  evidence to preserve before details are lost. @mention it any
+  time to walk through the latest pager event.
 category: compliance
 
 story:
   hero: "Every page becomes an audit-ready timeline, automatically."
   subheadline: >-
-    When an incident fires, it captures the timeline, postmortem
-    owner, and the evidence to preserve — before anyone forgets
-    the details.
+    Every day, reviews the previous 24 hours of pager events —
+    timeline, postmortem owner, and the evidence to preserve —
+    before anyone forgets the details.
   steps:
     - role: trigger
-      title: "An incident fires."
+      title: "Every morning."
       body: >-
-        The heartbeat polls Better Stack once a day and picks
-        up new incidents the moment they're created — no webhook
-        to wire.
+        The heartbeat fires once a day and picks up every
+        incident that opened or resolved in the past 24 hours.
     - role: action
       title: "It captures the timeline and evidence."
       body: >-
@@ -69,10 +68,11 @@ channels:
     ui:
       headline: "Give Incident Audit a Slack bot."
       blurb: >-
-        The agent posts an audit-ready timeline to every channel
-        you invite it to, every time Better Stack fires a new
-        incident. Invite it to one focused channel, or several —
-        whatever matches how your on-call team works.
+        The agent posts a daily audit-ready timeline to every
+        channel you invite it to, summarizing the past 24 hours
+        of Better Stack incidents. Invite it to one focused
+        channel, or several — whatever matches how your on-call
+        team works.
       done_note: "Bot ready — invite it to a channel"
 
   - type: heartbeat
