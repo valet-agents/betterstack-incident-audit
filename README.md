@@ -9,7 +9,7 @@ When an incident fires, it captures the timeline, postmortem owner, and the evid
 <table>
   <tr>
     <td><strong>CHANNELS</strong></td>
-    <td><code>slack</code> · <code>heartbeat</code> — every 2m</td>
+    <td><code>slack</code> · <code>heartbeat</code> — daily</td>
   </tr>
   <tr>
     <td><strong>CONNECTORS</strong></td>

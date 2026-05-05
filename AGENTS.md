@@ -9,7 +9,7 @@ This folder contains the source for a Skilled Agent originally built for the Val
 ### Channels
 
 - **slack** (slack): The agent's per-agent Slack bot. Listens for @mentions and replies in-thread, and posts audit-ready incident timelines to whichever channels the bot has been invited to. Slack writes use the auto-injected outbound Slack connector.
-- **heartbeat** (heartbeat): Fires every 2 minutes (`every: 2m`). Polls Better Stack for new incidents and queues resolution replies for any tracked incident that just closed. Declared inline in `valet.yaml`, so it's created automatically by the dashboard setup flow.
+- **heartbeat** (heartbeat): Fires once a day (`every: 24h`). Polls Better Stack for new incidents and queues resolution replies for any tracked incident that just closed. Declared inline in `valet.yaml`, so it's created automatically by the dashboard setup flow.
 
 ### Secrets
 
@@ -24,7 +24,7 @@ This folder contains the source for a Skilled Agent originally built for the Val
 
 ## Customizing
 
-- **Change the heartbeat interval**: edit `every` on the `heartbeat` channel in `valet.yaml`, then redeploy. The default is 2 minutes — incidents are time-sensitive, so going much higher trades responsiveness for fewer pollings.
+- **Change the heartbeat interval**: edit `every` on the `heartbeat` channel in `valet.yaml`, then redeploy. The default `24h` runs a daily incident-audit pass; drop it to `5m` or below if you want incidents posted close to when they fire (incidents are time-sensitive, so the trade-off favors responsiveness for live on-call channels).
 - **Set a default postmortem owner**: set the `DEFAULT_POSTMORTEM_OWNER` env var on the agent (a Slack `@user` handle, an email, or a name). The SOUL falls back to it when Better Stack hasn't assigned an owner yet, and to `unassigned` if neither is set.
 - **Tune which evidence pointers get included**: the SOUL **Phase 2** list (incident URL, dashboard URL, log query, error count at fire) is the default. Add or remove pointers there if your team's audit process expects more or fewer artifacts.
 - **Control where timelines post**: invite or remove the bot from channels in Slack — that's the only signal the agent uses. There is no channel name in the configuration.

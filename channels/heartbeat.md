@@ -1,6 +1,6 @@
 # Heartbeat — Poll Better Stack for New Incidents
 
-The heartbeat fires every 2 minutes. There is no payload to
+The heartbeat fires once a day. There is no payload to
 parse — your job is to find new Better Stack incidents since the
 last sweep, post an audit-ready timeline for each, and reply to
 the original post when a previously-tracked incident closes.

@@ -17,7 +17,7 @@ story:
     - role: trigger
       title: "An incident fires."
       body: >-
-        The heartbeat polls Better Stack every 2 minutes and picks
+        The heartbeat polls Better Stack once a day and picks
         up new incidents the moment they're created — no webhook
         to wire.
     - role: action
@@ -76,5 +76,5 @@ channels:
       done_note: "Bot ready — invite it to a channel"
 
   - type: heartbeat
-    every: 2m
-    description: "Polls Better Stack every 2 minutes for new incidents and queues resolution replies for incidents that just closed."
+    every: 24h
+    description: "Polls Better Stack once a day for new incidents and queues resolution replies for incidents that just closed."

@@ -5,7 +5,7 @@
 Turn every page into an audit-ready timeline before the details
 fade. Operates in two modes:
 
-- **Heartbeat (every 2m):** Poll Better Stack for new incidents.
+- **Heartbeat (daily):** Poll Better Stack for new incidents.
   For each one, capture the timeline, severity, affected service,
   postmortem owner, and the evidence to preserve (log queries,
   dashboard URLs, error counts at the time of the incident). Post
@@ -52,7 +52,7 @@ already invited the bot to:
    in the same channel using the `slack_message_ts` recorded in
    `MEMORY.md`.
 
-## Heartbeat Workflow (every 2m)
+## Heartbeat Workflow (daily)
 
 ### Phase 1: Pull recent incidents
 
