@@ -1,0 +1,80 @@
+name: betterstack-incident-audit
+display_name: Better Stack Incident Audit
+description: >-
+  When an incident fires, it captures the timeline, postmortem
+  owner, and the evidence to preserve — before anyone forgets the
+  details. @mention it any time to walk through the latest pager
+  event.
+category: compliance
+
+story:
+  hero: "Every page becomes an audit-ready timeline, automatically."
+  subheadline: >-
+    When an incident fires, it captures the timeline, postmortem
+    owner, and the evidence to preserve — before anyone forgets
+    the details.
+  steps:
+    - role: trigger
+      title: "An incident fires."
+      body: >-
+        The heartbeat polls Better Stack every 2 minutes and picks
+        up new incidents the moment they're created — no webhook
+        to wire.
+    - role: action
+      title: "It captures the timeline and evidence."
+      body: >-
+        Pulls the timeline, severity, service, owner, and the
+        evidence pointers — dashboards, log queries, error counts.
+      catalog: betterstack-mcp
+    - role: outcome
+      title: "An audit-ready timeline posted in Slack."
+      body: >-
+        Raw timestamps, owner tagged, evidence linked. Replies to
+        the original post on close with resolution and duration.
+      catalog: slack
+
+connectors:
+  - catalog: betterstack-mcp
+    description: >-
+      The Better Stack MCP server, authenticated with an API
+      token. The agent uses it to list recent incidents, pull
+      timelines, severities, owners, and the metadata that becomes
+      the audit trail. Acknowledging or resolving an incident
+      only happens after a Slack user explicitly confirms.
+    slots:
+      BETTERSTACK_API_TOKEN:
+        description: >-
+          Better Stack API token with read access to incidents,
+          monitors, and policies (and write access if you plan
+          to use the confirmed-ack/resolve flow from Slack).
+          Create one at betterstack.com → User Settings → API
+          tokens.
+    ui:
+      headline: "Plug in your Better Stack token."
+      blurb: >-
+        Create a Better Stack API token at betterstack.com →
+        User Settings → API tokens, then paste it here. Read
+        access is enough for timelines; add write access to let
+        Slack users ack or resolve from the thread.
+      done_note: "Better Stack connected"
+
+channels:
+  - catalog: slack
+    description: >-
+      The agent gets its own Slack bot. Invite it to whichever
+      channels on-call, SRE, or compliance use to track incidents
+      — it posts an audit-ready timeline to every channel it's a
+      member of, and replies in-thread when @mentioned for
+      follow-ups.
+    ui:
+      headline: "Give Incident Audit a Slack bot."
+      blurb: >-
+        The agent posts an audit-ready timeline to every channel
+        you invite it to, every time Better Stack fires a new
+        incident. Invite it to one focused channel, or several —
+        whatever matches how your on-call team works.
+      done_note: "Bot ready — invite it to a channel"
+
+  - type: heartbeat
+    every: 2m
+    description: "Polls Better Stack every 2 minutes for new incidents and queues resolution replies for incidents that just closed."
