@@ -43,14 +43,13 @@ connectors:
       timelines, severities, owners, and the metadata that becomes
       the audit trail. Acknowledging or resolving an incident
       only happens after a Slack user explicitly confirms.
-    slots:
-      BETTERSTACK_API_TOKEN:
-        description: >-
-          Better Stack API token with read access to incidents,
-          monitors, and policies (and write access if you plan
-          to use the confirmed-ack/resolve flow from Slack).
-          Create one at betterstack.com → User Settings → API
-          tokens.
+    slot_descriptions:
+      BETTERSTACK_API_TOKEN: >-
+        Better Stack API token with read access to incidents,
+        monitors, and policies (and write access if you plan
+        to use the confirmed-ack/resolve flow from Slack).
+        Create one at betterstack.com → User Settings → API
+        tokens.
     ui:
       headline: "Plug in your Better Stack token."
       blurb: >-
